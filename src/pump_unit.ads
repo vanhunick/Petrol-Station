@@ -1,10 +1,12 @@
 with Ada.Strings.Unbounded;
 with pump; use Pump;
+with fuel_types; use fuel_types;
 with reservoir; use reservoir; use Ada.Strings.Unbounded;
 
 
 package Pump_Unit with SPARK_Mode => on is
 
+   -- States the Pump unit can be in
    type state is (
                   BASE_STATE,
                   Ready_STATE,
@@ -21,9 +23,21 @@ package Pump_Unit with SPARK_Mode => on is
    -- The reservoirs the pump unit can use for the pump types
    type reservoir_array is array (1..4) of reservoir_type;
 
+   function can_pump(A_Pump_Unit : in Pump_Unit_Type; Amount : in Fuel_Litre) return Boolean;
+
+   -- Lift a nozzle
+   procedure lift_Nozzle(A_Pump_Unit : in Pump_Unit_Type; ftype : in Fuel_Type); -- not sure if pump or fuel type
+
+   -- Returns the nozzle to the cradle
+   procedure return_Nozzle(A_Pump_Unit : in Pump_Unit_Type); -- not sure if pump or fuel type
+
+   -- Pumps fuel
    procedure pump(A_Pump_Unit : in Pump_Unit_Type; Amount : in Fuel_Litre);
 
-   function can_pump(A_Pump_Unit : in Pump_Unit_Type; Amount : in Fuel_Litre) return Boolean;
+   -- Pay
+
+   -- Init
+   function create_pump_unit(pumps : in pumps_array; res : reservoir_array)return Pump_Unit_Type;
 
 
 private
