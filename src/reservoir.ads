@@ -11,6 +11,8 @@ package reservoir with SPARK_Mode => on is
 
    procedure set_empty(res : in out reservoir_type);
 
+   function Create(f_type : in Fuel_Type; amount : in Fuel_Litre)return reservoir_type;
+
 private
    type reservoir_type is
       record

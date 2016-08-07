@@ -36,8 +36,9 @@ package Pump_Unit with SPARK_Mode => on is
 
    -- Pay
 
+
    -- Init
-   function create_pump_unit(pumps : in pumps_array; res : reservoir_array)return Pump_Unit_Type;
+   function create(pumps : in pumps_array; res : reservoir_array)return Pump_Unit_Type;
 
 
 private
