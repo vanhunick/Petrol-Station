@@ -54,6 +54,8 @@ begin
    -- Create the unit
    Pump_Unit_Main := Pump_Unit.create(pump_array,res_array);
 
+   -- From here can only use the pump unit to control everything
+
 
 
 

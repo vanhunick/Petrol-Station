@@ -15,6 +15,10 @@ package Pump with SPARK_Mode => on is
 
    function Create(fuel : in Fuel_Type )return Pump_Type;
 
+   function nozzle_lifted(Pump : in Pump_Type)return Boolean;
+
+
+
 private
    type Pump_Type is
       record
