@@ -7,22 +7,29 @@ use Ada.Strings.Unbounded;
 
 package Pump with SPARK_Mode => on is
 
+   -- Type that holds the pump data
    type Pump_Type is private;
 
-   procedure pump(A_Pump : in out Pump_Type);
-
-   function can_pump(a_pump : in Pump_Type) return Boolean;
-
+   -- Creates an instance of the pump type and returns it
    function Create(fuel : in Fuel_Type )return Pump_Type;
 
+   -- Returns if the nozzle is lifted
    function nozzle_lifted(Pump : in Pump_Type)return Boolean;
 
+   -- lifts the nozzle
+   procedure Lift_Nozzle(pump : in out Pump_Type);
 
+   -- returns the nozzle
+   procedure Return_Nozzle(pump : in out Pump_Type);
+
+   -- Returns the type of fuel the pump is on
+   function get_fuel_Type(pump : in Pump_Type)return Fuel_Type;
 
 private
    type Pump_Type is
       record
          Pumping : Boolean;
          Nozzle_Lifted : Boolean;
+         fuel_t : Fuel_Type;
       end record;
 end pump;
