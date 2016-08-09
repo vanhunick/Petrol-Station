@@ -33,16 +33,20 @@ package Pump_Unit with SPARK_Mode => on is
    -- Lift a nozzle
    procedure lift_Nozzle(A_Pump_Unit : in out Pump_Unit_Type; ftype : in Fuel_Type); -- not sure if pump or fuel type
 
+
    -- Returns the nozzle to the cradle
-   procedure return_Nozzle(A_Pump_Unit : in Pump_Unit_Type); -- not sure if pump or fuel type
+   procedure return_Nozzle(A_Pump_Unit : in out Pump_Unit_Type); -- not sure if pump or fuel type
 
    -- Pumps fuel
-   procedure pump_fuel(A_Pump_Unit : in Pump_Unit_Type; Amount : in Fuel_Litre);
+   procedure pump_fuel(A_Pump_Unit : in out Pump_Unit_Type; Amount : in Fuel_Litre);
 
    -- Check all the nozzles are down
    function check_nozzle_down(A_pump_unit : in Pump_Unit_Type)return Boolean;
 
+   procedure pay_outstanding(A_Pump_Unit : in out Pump_Unit_Type); -- No need for amount
+
    -- Pay
+
 
 
 private
@@ -53,6 +57,7 @@ private
          reservoirs : reservoir_array;
          pumping : Boolean;
          outstanding : Boolean;
+         outstanding_Cost : Dollars;
       end record;
 
 end pump_unit;

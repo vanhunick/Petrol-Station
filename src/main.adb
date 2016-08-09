@@ -27,6 +27,7 @@ procedure main is
 
    res_array : reservoir_array;
    pump_array : pumps_array;
+   test : Boolean;
 
 
 begin
@@ -37,9 +38,9 @@ begin
    Pump_Diesel := Pump.create(Diesel);
 
    -- Init the reserviors
-   Res_91 := Reservoir.Create(F91, 1000.00);
-   Res_95 := Reservoir.Create(F95, 1000.00);
-   Res_Diesel :=Reservoir.Create(Diesel, 1000.00);
+   Res_91 := Reservoir.Create(F91, 1000.00, 1.00);
+   Res_95 := Reservoir.Create(F95, 1000.00, 1.50);
+   Res_Diesel :=Reservoir.Create(Diesel, 1000.00, 2.00);
 
    -- Set the pump array
    pump_array(1) := Pump_91;
@@ -54,6 +55,27 @@ begin
    -- Create the unit
    Pump_Unit_Main := Pump_Unit.create(pump_array,res_array);
 
+   -- Check if the nozzles are down
+   test := Pump_Unit.check_nozzle_down(Pump_Unit_Main);
+
+
+   -- Lift a nozzle
+   Pump_Unit.lift_Nozzle(Pump_Unit_Main, F91);
+
+   -- Pump too much fuel
+   test := Pump_Unit.can_pump(Pump_Unit_Main, 500.00);
+
+   -- Check if the nozzles are down
+   test := Pump_Unit.check_nozzle_down(Pump_Unit_Main);
+
+   -- Return the nozzle
+   Pump_Unit.return_Nozzle(Pump_Unit_Main);
+
+   -- Check if you can pump
+   test := Pump_Unit.can_pump(Pump_Unit_Main, 500.00);
+
+   --
+   Pump_Unit.pump_fuel(Pump_Unit_Main, 100.00);
 
    null;
 end main;
