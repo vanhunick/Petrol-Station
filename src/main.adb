@@ -1,15 +1,10 @@
+with Ada.Strings.Unbounded;use Ada.Strings.Unbounded;
 with Ada.Text_IO; use Ada.Text_IO;
+with Pump_Unit; use Pump_Unit;
+with Pump; use Pump;
+with reservoir; use reservoir;
+with fuel_types; use fuel_types;
 with Pump_Unit;
-use Pump_Unit;
-with Pump;
-use Pump;
-with reservoir;
-use reservoir;
-with fuel_types;
-with Pump_Unit;
-use fuel_types;
-with Ada.Strings.Unbounded;
-use Ada.Strings.Unbounded;
 
 procedure main is
 
@@ -21,14 +16,18 @@ procedure main is
    Pump_Diesel : Pump_Type;
 
    -- Reserviours
-   Res_91 : reservoir_type;
-   Res_95 : reservoir_type;
-   Res_Diesel : reservoir_type;
+   Res_91 : Reservoir_Type;
+   Res_95 : Reservoir_Type;
+   Res_Diesel : Reservoir_Type;
 
-   res_array : reservoir_array;
-   pump_array : pumps_array;
+   -- The array of reservoirs
+   Res_Array : Reservoir_Array;
+
+   -- The array of pumps
+   pump_array : Pumps_Array;
+
+   -- Temp
    test : Boolean;
-
 
 begin
 
