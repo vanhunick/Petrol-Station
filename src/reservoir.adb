@@ -17,35 +17,26 @@ package body reservoir is
       return res;
    end Create;
 
-   -- Sets the reservoir to be empty
-   procedure set_empty(res : in out reservoir_type) is
-   begin
-      res.amout_fuel := 0.00;
-      res.empty := true;
-   end set_empty;
-
-
    -- Adds fuel to the reservoir and sets the empty flag to false if it is no longer empty
-   procedure add_fuel(res : in out reservoir_type; amount : in Fuel_Litre) is
+   procedure Add_Fuel(Res : in out Reservoir_Type; Amount : in Fuel_Litre) is
    begin
-      res.amout_fuel := res.amout_fuel + amount;
+      Res.Amout_Fuel := Res.Amout_Fuel + Amount;
 
-      if res.amout_fuel > 0.0 then
-         res.empty := False;
+      if Res.Amout_Fuel > 0.0 then
+         Res.Empty := False;
       end if;
-   end add_fuel;
+   end Add_Fuel;
 
-   procedure remove_fuel(res : in out reservoir_type; amount : in Fuel_Litre) is
+
+   procedure Remove_Fuel(Res : in out Reservoir_Type; Amount : in Fuel_Litre) is
    begin
-      res.amout_fuel := res.amout_fuel - amount;
-   end remove_fuel;
+      Res.Amout_Fuel := Res.Amout_Fuel - Amount;
+   end Remove_Fuel;
 
-   function get_cost(res : in reservoir_type)return Dollars is (res.cost);
+   function Get_Cost(Res : in Reservoir_Type)return Dollars is (Res.Cost);
 
-   function Get_Fuel_Type(res : in reservoir_type)return Fuel_Type is (res.fuel);
+   function Get_Fuel_Type(Res : in Reservoir_Type)return Fuel_Type is (Res.Fuel);
 
-   function get_fuel_Left(res : in reservoir_type)return Fuel_Litre is (res.amout_fuel);
-
-
+   function Get_Fuel_Left(Res : in Reservoir_Type)return Fuel_Litre is (Res.Amout_Fuel);
 
 end reservoir;

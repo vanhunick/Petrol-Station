@@ -1,41 +1,41 @@
-with Ada.Strings.Unbounded;
-with fuel_types;
-use fuel_types;
-use Ada.Strings.Unbounded;
+with fuel_types; use fuel_types;
 
-
-package reservoir with SPARK_Mode => on is
+package Reservoir with SPARK_Mode => on is
 
    -- Cost of the fuel type
    type Dollars is delta 0.01 digits 12;
 
    -- The type that stores the reservoirs data
-   type reservoir_type is private;
+   type Reservoir_Type is private;
 
-   --
-   type Fuel_Litre is digits 10 range 0.00 .. 10000000.00; -- Might need to be larger
+   -- The quanity of fuel type
+   type Fuel_Litre is digits 10 range 0.00 .. 10000000.00;
 
-   procedure set_empty(res : in out reservoir_type);
-
+   -- Creates and returns a reservoir
    function Create(f_type : in Fuel_Type; amount : in Fuel_Litre; cost_fuel : in Dollars)return reservoir_type;
 
-   procedure add_fuel(res : in out reservoir_type; amount : in Fuel_Litre);
+   -- Add fuel to the reservoir
+   procedure Add_Fuel(Res : in out Reservoir_Type; amount : in Fuel_Litre);
 
-   procedure remove_fuel(res : in out reservoir_type; amount : in Fuel_Litre);
+   -- Removes fuel from the reservoir
+   procedure Remove_Fuel(Res : in out Reservoir_Type; Amount : in Fuel_Litre);
 
-   function Get_Fuel_Type(res : in reservoir_type)return Fuel_Type;
+   -- Returns the fuel type the reservoir holds
+   function Get_Fuel_Type(Res : in Reservoir_Type)return Fuel_Type;
 
-   function get_cost(res : in reservoir_type)return Dollars;
+   -- Gets the cost of the fuel in the reservoir
+   function Get_Cost(Res : in Reservoir_Type)return Dollars;
 
-   function get_fuel_Left(res : in reservoir_type)return Fuel_Litre;
+   -- Returns the amount of fuel left in the reservoir
+   function Get_Fuel_Left(Res : in Reservoir_Type)return Fuel_Litre;
 
 private
-   type reservoir_type is
+   type Reservoir_Type is
       record
-         empty : Boolean;
-         fuel : Fuel_Type;
-         amout_fuel : Fuel_Litre;
-         cost : Dollars;
+         Empty : Boolean;
+         Fuel : Fuel_Type;
+         Amout_Fuel : Fuel_Litre;
+         Cost : Dollars;
       end record;
 
-end reservoir;
+end Reservoir;
