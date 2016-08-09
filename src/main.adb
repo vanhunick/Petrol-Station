@@ -1,10 +1,7 @@
-with Ada.Strings.Unbounded;use Ada.Strings.Unbounded;
-with Ada.Text_IO; use Ada.Text_IO;
 with Pump_Unit; use Pump_Unit;
 with Pump; use Pump;
 with reservoir; use reservoir;
 with fuel_types; use fuel_types;
-with Pump_Unit;
 
 procedure main is
 

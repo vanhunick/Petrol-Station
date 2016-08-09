@@ -1,7 +1,6 @@
-with Ada.Strings.Unbounded;
 with pump; use Pump;
 with fuel_types; use fuel_types;
-with reservoir; use reservoir; use Ada.Strings.Unbounded;
+with reservoir; use reservoir;
 
 package Pump_Unit with SPARK_Mode => on is
 
