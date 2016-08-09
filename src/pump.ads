@@ -1,9 +1,4 @@
-with Ada.Strings.Unbounded;
-with reservoir;
-with fuel_types;
-use fuel_types;
-with reservoir;
-use Ada.Strings.Unbounded;
+with fuel_types; use fuel_types;
 
 package Pump with SPARK_Mode => on is
 
@@ -11,25 +6,25 @@ package Pump with SPARK_Mode => on is
    type Pump_Type is private;
 
    -- Creates an instance of the pump type and returns it
-   function Create(fuel : in Fuel_Type )return Pump_Type;
+   function Create(Fuel : in Fuel_Type )return Pump_Type;
 
    -- Returns if the nozzle is lifted
-   function nozzle_lifted(Pump : in Pump_Type)return Boolean;
+   function Nozzle_Lifted(Pump : in Pump_Type)return Boolean;
 
    -- lifts the nozzle
-   procedure Lift_Nozzle(pump : in out Pump_Type);
+   procedure Lift_Nozzle(Pump : in out Pump_Type);
 
    -- returns the nozzle
-   procedure Return_Nozzle(pump : in out Pump_Type);
+   procedure Return_Nozzle(Pump : in out Pump_Type);
 
    -- Returns the type of fuel the pump is on
-   function get_fuel_Type(pump : in Pump_Type)return Fuel_Type;
+   function Get_Fuel_Type(Pump : in Pump_Type)return Fuel_Type;
 
 private
    type Pump_Type is
       record
          Pumping : Boolean;
          Nozzle_Lifted : Boolean;
-         fuel_t : Fuel_Type;
+         Fuel_T : Fuel_Type;
       end record;
-end pump;
+end Pump;
