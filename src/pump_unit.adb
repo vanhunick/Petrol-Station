@@ -54,7 +54,6 @@ package body pump_unit is
                end loop;
             end if;
          end loop; -- Check if the res has enough fuel in it
-         Put_Line("Can't pump Something horrible has occoured should not get here");
          return False;
    end can_pump;
 
@@ -128,6 +127,7 @@ package body pump_unit is
                      Put_Line("Fuel Pumped and cost updated");
 
                      -- Set the state to waiting
+                     A_Pump_Unit.Outstanding := True;
                      A_Pump_Unit.Cur_State := WAITING_STATE;
                      return;
                   end if;
@@ -135,8 +135,6 @@ package body pump_unit is
             end if;
       end loop;
       end if;
-      Put_Line("Can't pump");
-
    end Pump_Fuel;
 
    -- Pays the outstanding amount and returns to base state
@@ -152,7 +150,6 @@ package body pump_unit is
          return;
       end if;
 
-
       -- Clear the outstanding payment
       A_Pump_Unit.Outstanding := False;
       A_Pump_Unit.Outstanding_Cost := 0.00;
@@ -161,5 +158,7 @@ package body pump_unit is
       A_Pump_Unit.Cur_State := BASE_STATE;
       Put_Line("Payment made, back to base state");
    end Pay_Outstanding;
+
+   function Get_State(A_Pump_Unit : in Pump_Unit_Type)return State is (A_Pump_Unit.Cur_State);
 
 end pump_unit;

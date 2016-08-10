@@ -40,7 +40,10 @@ package Pump_Unit with SPARK_Mode => on is
    function Check_Nozzle_Down(A_pump_unit : in Pump_Unit_Type)return Boolean;
 
    -- Pay the outstanding amount
-   procedure Pay_Outstanding(A_Pump_Unit : in out Pump_Unit_Type);
+   procedure Pay_Outstanding(A_Pump_Unit : in out Pump_Unit_Type) with pre =>
+   Pump_Unit.Get_State(A_Pump_Unit) = WAITING_STATE;
+
+   function Get_State(A_Pump_Unit : in Pump_Unit_Type)return State;
 
 private
    type Pump_Unit_Type is
