@@ -1,4 +1,4 @@
-with petrol.Stdtest;
+with petrol_Stdtest;
 
 package body Petrol_Stdsuite is
 
@@ -9,7 +9,7 @@ package body Petrol_Stdsuite is
       TS_Ptr : constant Access_Test_Suite := new Test_Suite;
    begin
 
-      TS_Ptr.Add_Test (new Math.Stdtest.TC) ;
+      TS_Ptr.Add_Test (new Petrol_Stdtest.TC) ;
 
       return TS_Ptr;
 

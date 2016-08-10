@@ -1,5 +1,5 @@
 with AUnit.Test_Suites; use AUnit.Test_Suites;
-with petrol.Test;
+--with petrol_Test;
 
 function Petrol_Suite return Access_Test_Suite is
 
@@ -7,7 +7,7 @@ function Petrol_Suite return Access_Test_Suite is
 
 begin
 
-   TS_Ptr.Add_Test (new Math.Test.TC);
+   --TS_Ptr.Add_Test (new Petrol_Test.TC);
 
    return TS_Ptr;
 
