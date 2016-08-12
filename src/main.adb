@@ -2,6 +2,7 @@ with Pump_Unit; use Pump_Unit;
 with Pump; use Pump;
 with reservoir; use reservoir;
 with fuel_types; use fuel_types;
+with Text_IO; use Text_IO;
 
 procedure main is
 
@@ -25,6 +26,8 @@ procedure main is
 
    -- Temp
    test : Boolean;
+
+   pumped : Boolean;
 
 begin
 
@@ -71,7 +74,16 @@ begin
    test := Pump_Unit.can_pump(Pump_Unit_Main, 500.00);
 
    --
-   Pump_Unit.pump_fuel(Pump_Unit_Main, 100.00);
+
+   Pump_Unit.pump_fuel(Pump_Unit_Main, 100.00, pumped);
+
+   Put_Line(pumped'Image);
+
+   Pump_Unit.lift_Nozzle(Pump_Unit_Main, F91);
+
+   Pump_Unit.pump_fuel(Pump_Unit_Main, 100.00, pumped);
+
+   Put_Line(pumped'Image);
 
    null;
 end main;

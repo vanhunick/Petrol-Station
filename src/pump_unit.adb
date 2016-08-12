@@ -1,7 +1,7 @@
 with Ada.Text_IO; use Ada.Text_IO;
 with Pump; use Pump;
 
-package body pump_unit is
+package body pump_unit with SPARK_Mode => on is
 
 
    -- Creates and returns a pump unit
@@ -105,11 +105,13 @@ package body pump_unit is
 
 
    -- Pumps fuel
-   procedure Pump_Fuel(A_Pump_Unit : in out Pump_Unit_Type; Amount : in Fuel_Litre) is
+   procedure Pump_Fuel(A_Pump_Unit : in out Pump_Unit_Type; Amount : in Fuel_Litre; pumped : out Boolean) is
+
    begin
       -- First check we are in the correct state
       if not ( A_Pump_Unit.Cur_State = READY_STATE) then
          Put_Line("Cannot pump, inccorect state");
+         pumped := false;
          return;
       end if;
 
@@ -129,6 +131,7 @@ package body pump_unit is
                      -- Set the state to waiting
                      A_Pump_Unit.Outstanding := True;
                      A_Pump_Unit.Cur_State := WAITING_STATE;
+                     pumped := True;
                      return;
                   end if;
                end loop;

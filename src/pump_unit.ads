@@ -34,7 +34,7 @@ package Pump_Unit with SPARK_Mode => on is
    procedure Return_Nozzle(A_Pump_Unit : in out Pump_Unit_Type); -- not sure if pump or fuel type
 
    -- Pumps fuel
-   procedure Pump_Fuel(A_Pump_Unit : in out Pump_Unit_Type; Amount : in Fuel_Litre);
+   procedure Pump_Fuel(A_Pump_Unit : in out Pump_Unit_Type; Amount : in Fuel_Litre; pumped : out Boolean);
 
    -- Check all the nozzles are down
    function Check_Nozzle_Down(A_pump_unit : in Pump_Unit_Type)return Boolean;
